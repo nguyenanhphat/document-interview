@@ -1,0 +1,99 @@
+// Async await / promises
+// Task A => task B, C => task D
+// await A => await Promise.all[B, C] => task D
+ React thì chỉ hỏi 1 câu HOC
+// Coding challange
+input [1,5,4,7,8] 
+Nó kiu khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
+A {age: 18, name: 'A'} . B {name: 'A', age: 18}
+Viết hàm compare tuổi
+
+JAVASCRIPT
+Ex 2:
+Nếu có code block bên trong một function thì vả trở thành function-level variable:
+
+function sayHi() {
+  if (true) {
+    var phrase = "Hello";
+  }
+
+  alert(phrase); // works
+}
+
+sayHi();
+alert(phrase); // ReferenceError: phrase is not defined
+
+
+Ex 3:
+function sayHi() {
+  alert(this);
+}
+
+sayHi(); // undefined\
+1/ Phone biệt let, var, const
+- Đều dung để khai báo biến
+    - Let
+        - Các biến được khai báo là let sẽ có scope là block scope
+        - Cho phép chúng ta cập nhật lại giá trị của biến chứ không cho phép tái khái bái lại biến đó
+            - let greeting = "say Hi";
+            - let greeting = "say Hello instead"; // error: Identifier 'greeting' has already been declared
+        - Đối với các block khác nhau thì việc tái khai báo sẽ không gây ra lỗi
+    - Var
+        - Các biến được khai báo là var thì sẽ có scope là function-scoped  hoặc global-scoped (See ex2)
+        - Cho phép khai báo lại biến đó
+        - Các biến var có thể được khai báo dưới việc sử dụng chúng (Người ta gọi đó là hoisting, bởi vi các biến được khai báo là vả được raised lên đầu của function)
+            - Declarations thì được hoisted, nhưng assignment thì không
+    - Const
+        - Để khai báo 1 hắng số
+        - Không thể cập nhật giá trị
+
+2/ Con trỏ this
+- Giá trị của this là một object trước dấu .
+- Khi gọi mà không có đối tượng thì thís == undefined (See ex3)
+- Arrow function không có this
+    - Nếu chúng ta tham chiếu thí trong arrow function, nó sẽ được lấy từ outer function
+
+3/ Functions
+- Function declaration: function say(name) {}
+- Function expression: const say = function say() {}
+- Lexical environment bao gồm 2 phần: Environment Record and outer lexical environment
+- Closure
+    - Tất cả function trong javascript đều là closure
+    - Tất cả function đều ghi nhớ các outer variables của nó và có thể truy cập nó.
+    - Tất cả cái function có thuộc tính ẩn là Environment
+
+3/ Phân biệt pure function và impure function
+- Pure function phải thoả mãn 2 điều kiện
+    - Các input giống nhau luôn trả ra output giống nhau
+    - Không có sideeffects:
+        - Thay đổi giá trị đầu vào
+        - Http calll, Thay đổi 1 file(s), query dom…
+
+REACT
+1/ HOC
+- A Hoc là 1 function mà nó nhận vào 1 component và returns 1 component mới
+- Sử dụng HOC cho Cross-cutting concerns(Những logic phụ cần  được thực hiện khi logic chính được gọi)
+
+2/ Error Boundaries
+- Là 1 react component mà nó catch javascript error trong cây thành phần con của nó, log erro đó và display 1 fallbackUI thay vì component tree sẽ bị crashed
+- Error Boundaries catch error trong quá trình render, in lifecycle and in constructor
+      static getDerivedStateFromError() or componentDidCatch()
+
+3/ Hook là gì ?
+- Là những hàm cho phép bạn “kết nối” React state and lifecycle vào các function component
+- Lợi ích: 
+    - Code ngắn hơn
+    - Hoàn toàn tự nguyện, 100% tương thích ngược
+
+4/ Function component và class component
+- Khác nhau lớn nhất giữa function component và class component là
+    - Function component capture các giá trị đã render
+
+3/ UseRef
+- Là một hook dùng để access đến DOM element hoặc 1 instance của component
+
+
+
+CHALLENGE
+1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
+Ex: arr = [1,5,4,7,8]
