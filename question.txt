@@ -1,35 +1,8 @@
 // Async await / promises
 // Task A => task B, C => task D
 // await A => await Promise.all[B, C] => task D
- React thì chỉ hỏi 1 câu HOC
-// Coding challange
-input [1,5,4,7,8] 
-Nó kiu khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
-A {age: 18, name: 'A'} . B {name: 'A', age: 18}
-Viết hàm compare tuổi
 
 JAVASCRIPT
-Ex 2:
-Nếu có code block bên trong một function thì vả trở thành function-level variable:
-
-function sayHi() {
-  if (true) {
-    var phrase = "Hello";
-  }
-
-  alert(phrase); // works
-}
-
-sayHi();
-alert(phrase); // ReferenceError: phrase is not defined
-
-
-Ex 3:
-function sayHi() {
-  alert(this);
-}
-
-sayHi(); // undefined\
 1/ Phone biệt let, var, const
 - Đều dung để khai báo biến
     - Let
@@ -40,6 +13,16 @@ sayHi(); // undefined\
         - Đối với các block khác nhau thì việc tái khai báo sẽ không gây ra lỗi
     - Var
         - Các biến được khai báo là var thì sẽ có scope là function-scoped  hoặc global-scoped (See ex2)
+            Nếu có code block bên trong một function thì vả trở thành function-level variable:
+            function sayHi() {
+              if (true) {
+                var phrase = "Hello";
+              }
+              alert(phrase); // works
+            }
+            sayHi();
+            alert(phrase); // ReferenceError: phrase is not defined
+
         - Cho phép khai báo lại biến đó
         - Các biến var có thể được khai báo dưới việc sử dụng chúng (Người ta gọi đó là hoisting, bởi vi các biến được khai báo là vả được raised lên đầu của function)
             - Declarations thì được hoisted, nhưng assignment thì không
@@ -50,6 +33,11 @@ sayHi(); // undefined\
 2/ Con trỏ this
 - Giá trị của this là một object trước dấu .
 - Khi gọi mà không có đối tượng thì thís == undefined (See ex3)
+  function sayHi() {
+    alert(this);
+  }
+  sayHi(); // undefined
+
 - Arrow function không có this
     - Nếu chúng ta tham chiếu thí trong arrow function, nó sẽ được lấy từ outer function
 
@@ -97,3 +85,6 @@ REACT
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
+
+2/ Viêt hàm compare tuổi
+A {age: 18, name: 'A'} . B {name: 'A', age: 18}
