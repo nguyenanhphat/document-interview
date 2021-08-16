@@ -55,7 +55,7 @@ JAVASCRIPT
     - Các input giống nhau luôn trả ra output giống nhau
     - Không có sideeffects:
         - Thay đổi giá trị đầu vào
-        - Http calll, Thay đổi 1 file(s), query dom…
+        - Http call, Thay đổi 1 file(s), query dom…
 
 REACT
 1/ HOC
@@ -80,8 +80,14 @@ REACT
 3/ UseRef
 - Là một hook dùng để access đến DOM element hoặc 1 instance của component
 
+3/ Server side rendering và client side rendering
+- Server side rendering
+  + Nội dung HTML được server xử lý và trả về cho browser, tuy nhiên lúc này web
+  mới chỉ thấy nội dung, chưa thể tương tác được. Trình duyệt vẫn tiếp tục tải JS về
 
-
+- Client side rendering
+  + Trong csr, thì gánh nặng biên dịch nội dung và tạo html được chuyển sang client
+  
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
