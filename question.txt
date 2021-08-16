@@ -77,20 +77,54 @@ REACT
 - Khác nhau lớn nhất giữa function component và class component là
     - Function component capture các giá trị đã render
 
-3/ UseRef
+5/ UseRef
 - Là một hook dùng để access đến DOM element hoặc 1 instance của component
 
-3/ Server side rendering và client side rendering
+6/ Render Props
+- Share code giữa các component sử dụng 1 prop có value là một function
+
+
+7/ Server side rendering và client side rendering
 - Server side rendering
   + Nội dung HTML được server xử lý và trả về cho browser, tuy nhiên lúc này web
   mới chỉ thấy nội dung, chưa thể tương tác được. Trình duyệt vẫn tiếp tục tải JS về
 
 - Client side rendering
   + Trong csr, thì gánh nặng biên dịch nội dung và tạo html được chuyển sang client
-  
+
+- Compare ssr vs csr
+  - Web page load time
+    - First page load time: 
+      + CSR: browser load html, css, và js một lần sau đó compile HTML có thể sử dụng trên trình duyệt
+      + SSR: SSR mất ít thời gian hơn bình thường khi lần đầu tiên tải
+    - Second and further page load time: thời gian tải trang lần 2 là thời gian chuyển từ page này sang page khác
+      + CSR: Do tất cả js được tải lên trước cho client, thời gian tải sẽ ít hơn 
+      + SCR: Chu kỳ tải trang đầu tiên được lặp lại. Do đó thời gian tải sẽ mất thời gian hơn csr
+
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
 
 2/ Viêt hàm compare tuổi
 A {age: 18, name: 'A'} . B {name: 'A', age: 18}
+
+3/ Arr = [2, 3, 4, 5]
+  Cho cái mảng. 
+  - Tính sô lần tăng cho đến khi giá trị mảng bằng nhau
+  - Mỗi lần tăng lên 1 đơn vị phải giữ lại 1 giá trị không tăng
+  VD:
+  Arr[3]: [3, 4, 5, 5] result = 1
+  Arr[2]: [4, 5, 5, 6] result = 2
+  Arr[3]: [5, 6, 6, 6] result = 3
+  Arr[1]: [6, 6, 7, 7] result = 4
+  Arr[3]: [7, 7, 8, 7] result = 5
+  Arr[2]: [8, 8, 8, 8] result = 6
+  Result 6
+
+4/ arr = [2, 3, 4, 8, 10, 5, 6];
+- Ví dụ mỗi phần tử là doanh thu từng tháng theo thứ tự (tháng 1 => tháng 12), tính chệch lệch doanh thu lơn nhất giữa 2 tháng
+EX: arr = [2, 3, 4, 8, 10, 5, 6]; => result = 8 - 4 = 4;
+Ex: arr = [5, 4, 4, 2, 2]; => result = -1; (Không có tháng nào)
+
+
+
