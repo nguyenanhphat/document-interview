@@ -101,6 +101,24 @@ REACT
       + CSR: Do tất cả js được tải lên trước cho client, thời gian tải sẽ ít hơn 
       + SCR: Chu kỳ tải trang đầu tiên được lặp lại. Do đó thời gian tải sẽ mất thời gian hơn csr
 
+8/ Phân biệt angular với reactjs
+  Có nhiều yếu tố để so sánh lắm: m nói theo kinh nghiệm thôi. VD: về angular tiện cho mới học, vì framework hoàn chỉnh, chỉ đọc document & dùng tính năng. React thì học nhiều thứ, vì react thì flexible, cho tích hợp nhiều thứ- thư viện bên thứ 3.
+
+  Ưu điểm react: flexible, key là react native vì làm mobile, dễ dàng chuyển sang mobile nhanh. RN cross platform phổ biến.
+  Nhược điểm: khó vs người mới học
+
+  Angular: tích hợp sẵn TS. React thuận JS, vẫn có template để xài TS
+
+  Tốc độ render thì thao tác DOM vs HTML => đọc benchmarch trên mạng thì angular tốt hơn.
+  Về lưu trữ bộ nhớ thì React tốt hơn
+  => Tốc độ 2 thằng seem seem
+
+  Cộng đồng : react nhiều hơn, có react native, k bị breaking change như angular ( angularJS, Angular 2,4,7,8, ...) phải học lại
+
+  Cả 2 điều có đẩy đủ: binding, quản lý bộ nhớ, routing seem nhau
+
+  Vì xu hướng là mobile first => react native phổ biến hơn angular có ionic. Cân nhắc tuỳ theo dự án cần mobile app hay ko ? tối ưu thời gian hay ko
+
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
