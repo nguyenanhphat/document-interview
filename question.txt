@@ -1,9 +1,15 @@
 // Async await / promises
 // Task A => task B, C => task D
 // await A => await Promise.all[B, C] => task D
+components
+helpers
+pages
+routers
+states
+styles
 
 JAVASCRIPT
-1/ Phone biệt let, var, const
+1/ Phân biệt let, var, const
 - Đều dung để khai báo biến
     - Let
         - Các biến được khai báo là let sẽ có scope là block scope
@@ -24,7 +30,8 @@ JAVASCRIPT
             alert(phrase); // ReferenceError: phrase is not defined
 
         - Cho phép khai báo lại biến đó
-        - Các biến var có thể được khai báo dưới việc sử dụng chúng (Người ta gọi đó là hoisting, bởi vi các biến được khai báo là vả được raised lên đầu của function)
+        - Các biến var có thể được khai báo dưới việc sử dụng chúng (Người ta gọi đó là hoisting, 
+          bởi vi các biến được khai báo là vả được raised lên đầu của function)
             - Declarations thì được hoisted, nhưng assignment thì không
     - Const
         - Để khai báo 1 hắng số
@@ -50,12 +57,36 @@ JAVASCRIPT
     - Tất cả function đều ghi nhớ các outer variables của nó và có thể truy cập nó.
     - Tất cả cái function có thuộc tính ẩn là Environment
 
-3/ Phân biệt pure function và impure function
+4/ Phân biệt pure function và impure function
 - Pure function phải thoả mãn 2 điều kiện
     - Các input giống nhau luôn trả ra output giống nhau
-    - Không có sideeffects:
-        - Thay đổi giá trị đầu vào
-        - Http call, Thay đổi 1 file(s), query dom…
+    - Không có side effects:
+        - Modifying an argument
+        - Modifying a global variable
+        - Making HTTP request
+
+5/ Data Type
+  - Primitive, Null , Undefined, boolean, Number, string, symbol
+  - Reference: Kế thừa từ object 
+    - Date, Set, Map, Function, Array
+    - Map: là 1 collection có key và value, khác với object, Map cho phép key là any type
+      - method: (new Map(), map.set(key, value), map.get(key), 
+        map.has(key), map.delete(key), map.clear(), map.size)
+      - iteration: 
+        vd: let vegetable of recipeMap.keys(), let amount of recipeMap.values(), let entry of recipeMap
+
+    - Set: là tập hợp value (không có key), trong đó mỗi giá trị chỉ xuất hiện 1 lần
+      - method: new Set(iterable), set.add(value), set.delete(value), 
+        set.has(value), set.clear(), set.size()
+
+6/ Microtasks: promises
+   Macrotasks: setTimeOut
+    + Microtasks chạy trước Macrotasks
+
+7/ Generator function: 
+- Function*
+  Khi nó đc gọi, nó không thục thi code, thay vào đó nó return 1 object, để quản lý execution
+  method chình là main
 
 REACT
 1/ HOC
@@ -63,7 +94,8 @@ REACT
 - Sử dụng HOC cho Cross-cutting concerns(Những logic phụ cần  được thực hiện khi logic chính được gọi)
 
 2/ Error Boundaries
-- Là 1 react component mà nó catch javascript error trong cây thành phần con của nó, log erro đó và display 1 fallbackUI thay vì component tree sẽ bị crashed
+- Là 1 react component mà nó catch javascript error trong cây thành phần con của nó, 
+  log error đó và display 1 fallbackUI thay vì component tree sẽ bị crashed
 - Error Boundaries catch error trong quá trình render, in lifecycle and in constructor
       static getDerivedStateFromError() or componentDidCatch()
 
@@ -83,7 +115,6 @@ REACT
 6/ Render Props
 - Share code giữa các component sử dụng 1 prop có value là một function
 
-
 7/ Server side rendering và client side rendering
 - Server side rendering
   + Nội dung HTML được server xử lý và trả về cho browser, tuy nhiên lúc này web
@@ -97,12 +128,15 @@ REACT
     - First page load time: 
       + CSR: browser load html, css, và js một lần sau đó compile HTML có thể sử dụng trên trình duyệt
       + SSR: SSR mất ít thời gian hơn bình thường khi lần đầu tiên tải
-    - Second and further page load time: thời gian tải trang lần 2 là thời gian chuyển từ page này sang page khác
+    - Second and further page load time: thời gian tải trang lần 2 là thời gian chuyển từ page này 
+      sang page khác
       + CSR: Do tất cả js được tải lên trước cho client, thời gian tải sẽ ít hơn 
       + SCR: Chu kỳ tải trang đầu tiên được lặp lại. Do đó thời gian tải sẽ mất thời gian hơn csr
 
 8/ Phân biệt angular với reactjs
-  Có nhiều yếu tố để so sánh lắm: m nói theo kinh nghiệm thôi. VD: về angular tiện cho mới học, vì framework hoàn chỉnh, chỉ đọc document & dùng tính năng. React thì học nhiều thứ, vì react thì flexible, cho tích hợp nhiều thứ- thư viện bên thứ 3.
+  Có nhiều yếu tố để so sánh lắm: m nói theo kinh nghiệm thôi. VD: về angular tiện cho mới học, 
+  vì framework hoàn chỉnh, chỉ đọc document & dùng tính năng. 
+  React thì học nhiều thứ, vì react thì flexible, cho tích hợp nhiều thứ- thư viện bên thứ 3.
 
   Ưu điểm react: flexible, key là react native vì làm mobile, dễ dàng chuyển sang mobile nhanh. RN cross platform phổ biến.
   Nhược điểm: khó vs người mới học
@@ -111,13 +145,15 @@ REACT
 
   Tốc độ render thì thao tác DOM vs HTML => đọc benchmarch trên mạng thì angular tốt hơn.
   Về lưu trữ bộ nhớ thì React tốt hơn
-  => Tốc độ 2 thằng seem seem
+  => Tốc độ 2 thằng same same
 
-  Cộng đồng : react nhiều hơn, có react native, k bị breaking change như angular ( angularJS, Angular 2,4,7,8, ...) phải học lại
+  Cộng đồng : react nhiều hơn, có react native, 
+  k bị breaking change như angular ( angularJS, Angular 2,4,7,8, ...) phải học lại
 
   Cả 2 điều có đẩy đủ: binding, quản lý bộ nhớ, routing seem nhau
 
-  Vì xu hướng là mobile first => react native phổ biến hơn angular có ionic. Cân nhắc tuỳ theo dự án cần mobile app hay ko ? tối ưu thời gian hay ko
+  Vì xu hướng là mobile first => react native phổ biến hơn angular có ionic. 
+  Cân nhắc tuỳ theo dự án cần mobile app hay ko ? tối ưu thời gian hay ko
 
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
@@ -143,6 +179,5 @@ A {age: 18, name: 'A'} . B {name: 'A', age: 18}
 - Ví dụ mỗi phần tử là doanh thu từng tháng theo thứ tự (tháng 1 => tháng 12), tính chệch lệch doanh thu lơn nhất giữa 2 tháng
 EX: arr = [2, 3, 4, 8, 10, 5, 6]; => result = 8 - 4 = 4;
 Ex: arr = [5, 4, 4, 2, 2]; => result = -1; (Không có tháng nào)
-
 
 
