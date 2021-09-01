@@ -7,7 +7,6 @@ pages
 routers
 states
 styles
-
 JAVASCRIPT
 1/ Phân biệt let, var, const
 - Đều dung để khai báo biến
@@ -55,7 +54,7 @@ JAVASCRIPT
 - Closure
     - Tất cả function trong javascript đều là closure
     - Tất cả function đều ghi nhớ các outer variables của nó và có thể truy cập nó.
-    - Tất cả cái function có thuộc tính ẩn là Environment
+    - Tất cả các function có thuộc tính ẩn là Environment
 
 4/ Phân biệt pure function và impure function
 - Pure function phải thoả mãn 2 điều kiện
@@ -72,21 +71,65 @@ JAVASCRIPT
     - Map: là 1 collection có key và value, khác với object, Map cho phép key là any type
       - method: (new Map(), map.set(key, value), map.get(key), 
         map.has(key), map.delete(key), map.clear(), map.size)
-      - iteration: 
+      - iteration:
         vd: let vegetable of recipeMap.keys(), let amount of recipeMap.values(), let entry of recipeMap
+    - weakMap: giống Map, nhưng key của nó phải là object, no primitive values
+      - Không support iteration
 
     - Set: là tập hợp value (không có key), trong đó mỗi giá trị chỉ xuất hiện 1 lần
       - method: new Set(iterable), set.add(value), set.delete(value), 
         set.has(value), set.clear(), set.size()
+      - iteration: 
+        vd: for (let value of set)
+    - weakSet: giống Set, nhưng key của nó phải là object, no primitive values
+      - Không support iteration
 
 6/ Microtasks: promises
    Macrotasks: setTimeOut
     + Microtasks chạy trước Macrotasks
 
-7/ Generator function: 
+7/ Iterable: Là một object được implement Symbol.iterator method
+  - string, array là 1 iterable
+  - Example:
+    let range = {
+      from: 1,
+      to: 5
+    };
+    // 1. call to for..of initially calls this
+    range[Symbol.iterator] = function() {
+      // ...it returns the iterator object:
+      // 2. Onward, for..of works only with this iterator, asking it for next values
+      return {
+        current: this.from,
+        last: this.to,
+        // 3. next() is called on each iteration by the for..of loop
+        next() {
+          // 4. it should return the value as an object {done:.., value :...}
+          if (this.current <= this.last) {
+            return { done: false, value: this.current++ };
+          } else {
+            return { done: true };
+          }
+        }
+      };
+    };
+
+8/ Generator function: 
 - Function*
   Khi nó đc gọi, nó không thục thi code, thay vào đó nó return 1 object, để quản lý execution
-  method chình là main
+  method là generator object
+
+9/ Currying function
+- Thay vì function truyển 1 lúc nhiều argument, chúng lại được chuyển kiểu viết đó thành 1 function 
+chỉ nhận 1 argument, nhưng bên trong đó chúng ta lồng các function con bên trong
+  function multiply(a) {
+    return b => {
+      return c => {
+        return a * b * c
+      }
+    }
+  }
+  multiply(1)(2)(3)
 
 REACT
 1/ HOC
@@ -155,6 +198,62 @@ REACT
   Vì xu hướng là mobile first => react native phổ biến hơn angular có ionic. 
   Cân nhắc tuỳ theo dự án cần mobile app hay ko ? tối ưu thời gian hay ko
 
+9. Redux
+  - Action là 1 simple javascript object mà nó được sử dụng để gửi thông tin từ application của bạn
+  xuống store. Actions là resourse duy nhất cho store.
+    + Action phải có type property
+  - Reducers(pure function): là những action handler, nó hoạt động kết nối giữa action và store và
+    biến những thay đổi trong state.
+    + Reducer nhận vào previous state và action object và return next state
+  - Store: là nơi lưu trử data của ứng dụng, nó làm 1 số việc sau đây
+    + Lưu trữ state
+    + Cung cấp quyền truy cập vào state
+    + Cập nhật state
+    + Khi có 1 sự kiện thay đổi state, những bên này có thể được thông báo về sự thay đổi
+
+  - Core concept redux:
+    + Redux là 1 vùng chứa state cho app (mỗi app chỉ có 1 store duy nhất)
+    + Redux thì không cần được sử dụng với React
+    + State là read-only. Nó chỉ được thay đổi bằng việc dispacthing 1 action đến store
+    + Để mô tả các thay đổi của state bạn phải viết 1 function nhận vào current state và action 
+    để thực hiện. Các function này phải trả về 1 state mới.
+
+10/ lifecycle của React
+- Mounting
+  - constructor: dùng cho khởi tạo state, và binding method
+    + Được gọi trước khi mounted
+  - render: chỉ require trong class component, nó return 
+  - getDerivedStateFromProps: nó được gọi trước render(initial moun và bản cập nhật tiếp theo)
+  - componentDidMount: được thự thi ngay lập tức sau khi component mounted
+    + load data(call api)
+    + set up any subscriptions
+- Updating
+  - shouldComponentUpdate: được thực thi trước khi rendering khi new props hoặc new state
+    đang được nhận
+    + Method này không được gọi cho initial render hoặc khi forceUpdate được sử dụng
+    + Phương thức tồn tại cho 1 tối ưu hoá hiệu xuất
+    + Default là true nếu nó return false thì render(), componentDidUpdate() sẽ không được gọi
+    shouldComponentUpdate(nextProps, nextState)
+  - componentDidUpdate: được gọi sau khi cập nhật xảy ra 
+    + method này không được gọi cho lần init render
+    + Có thể call api, hay setState trong này, nhưng phải wraper với điều kiện
+    componentDidUpdate(prevProps) {
+      // Typical usage (don't forget to compare props):
+      if (this.props.userID !== prevProps.userID) {
+        this.fetchData(this.props.userID);
+      }
+    }
+- Unmounting
+  - componentWillUnmount: được thực thi ngay lập tức trước khi component bị unmouted và destroyed
+    + cleaning up any subscriptions
+    + invalidating timers,
+
+11/ React là thư viện JavaScript phổ biến nhất để xây dựng giao diện người dùng (UI).
+ReactJs chỉ là view Library:
+
+12/ Props are inputs to components
+  + Trigger state changes.
+
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
@@ -179,5 +278,9 @@ A {age: 18, name: 'A'} . B {name: 'A', age: 18}
 - Ví dụ mỗi phần tử là doanh thu từng tháng theo thứ tự (tháng 1 => tháng 12), tính chệch lệch doanh thu lơn nhất giữa 2 tháng
 EX: arr = [2, 3, 4, 8, 10, 5, 6]; => result = 8 - 4 = 4;
 Ex: arr = [5, 4, 4, 2, 2]; => result = -1; (Không có tháng nào)
+
+
+
+
 
 
