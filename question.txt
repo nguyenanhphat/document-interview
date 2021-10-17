@@ -288,7 +288,58 @@ CSS Flexbox
   - Flex: là viết tắt của 3 thuộc tính flex-grow, flex-shrink, flex-basis
     + default (flex: 0 1 auto): grow(0), shrink(1), basis(auto)
 CSS Grid
+  - Grid track: Các đường đánh dấu theo thứ tự theo các cột hàng hàng
+  - grid-template-columns: container sẽ chia cột cho các phần tử bên trong nó
+    .container {
+      grid-template-columns: 1fr 2fr 1fr 1fr 3fr;
+      grid-template-columns: 500px 200px;
+    }
+    + fraction-unit(fr): đây là 1 giá trị mới dùng cho css grid, giá trị này sẽ chiếm khoảng trống lớn nhất
+    có thể
+      vd: grid-template-columns: 1fr 2fr 1fr
+        Layout chia làm 3 cột, 2fr sẽ gấp đôi 2 côt còn lại, nghĩa là container 100% sẽ chia cho 4 cột,
+        và cột đầu tiên và cột cuối cùng sẽ chiếm 25% còn 50% là cột ở giữa
+  - grid-template-columns: thuộc tính này là chia hàng(rows)
+      vd: grid-template-rows: 100px 150px 50px;
 
+  - grid implicit và explicit tracks
+  - grid-auto-flow: khi có 1 phần tử bị rớt ra, thì thuộc tính này giúp set cho các phần tử đó
+      vd: 
+        grid-auto-flow: row
+        grid-auto-rows: 100px
+        grid-auto-flow: column
+        grid-auto-column: 100px
+  - grid-gap: tạo khoảng cách giữa các phần tử với nhau theo cột và theo hàng
+    - grid-gap: grid-row-gap grid-column-gap.
+
+  - Repeat(hàm): tạo nhiều cột và hàng 1 cách nhanh chóng
+    vd: grid-template-columns: 10% repeat(4,20%) 10%
+  
+  - grid-column: Giúp thiết lập vị trí và kích thước của các phần tử theo cột,
+    nó là viết tắt của grid-column-start và grid-column-end
+    + Cú pháp: grid-column: grid-column-start / grid-column-end
+      vd: grid-column: span 2 / 7: nó sẽ chiếm 2 cột bắt đầu từ cột số 7
+      vd: grid-column: 5 / span 2: nó sẽ chiếm 2 cột bắt đầu từ cột số 5
+  - grid-row: Giúp chúng ta thiết lập vị trí và kích thước của phần tử theo hàng
+    nó là viết tắt của grid-row-start và grid-row-end
+
+  - grid-template-areas: giúp tạo layout nhanh và dễ dàng
+    vd: grid-template-areas: "head head"
+                              "nav  main"
+                              "nav  foot";
+        grid-template-rows: 50px 1fr 30px;
+        grid-template-columns: 150px 1fr;
+
+Box-sizing:
+  + content-box: các element có default là content-box. 
+    Thuộc tính width và height để định nghĩa chiều rộng / cao của content
+  + border-box: chiều rộng element width = width content + padding (trái , phải) + border (trái, phải)
+
+rem và em 
+  - rem: là đơn vị tham chiếu tỷ lệ so với phần tử gốc của website 
+  ở đây là thẻ <html> dựa vào giá trị của thuộc tính font-size
+  - em: là đơn vị tham chiếu tỷ lệ so với phần tử cha trực tiếp chứa nó hoặc 
+  chính nó dựa vào giá trị của thuộc tính là font-size
 
 
 CHALLENGE
