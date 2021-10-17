@@ -1,6 +1,3 @@
-// Async await / promises
-// Task A => task B, C => task D
-// await A => await Promise.all[B, C] => task D
 components
 helpers
 pages
@@ -162,7 +159,6 @@ REACT
 - Server side rendering
   + Nội dung HTML được server xử lý và trả về cho browser, tuy nhiên lúc này web
   mới chỉ thấy nội dung, chưa thể tương tác được. Trình duyệt vẫn tiếp tục tải JS về
-
 - Client side rendering
   + Trong csr, thì gánh nặng biên dịch nội dung và tạo html được chuyển sang client
 
@@ -199,17 +195,18 @@ REACT
   Cân nhắc tuỳ theo dự án cần mobile app hay ko ? tối ưu thời gian hay ko
 
 9. Redux
+  - Store: là nơi lưu trử data của ứng dụng, nó làm 1 số việc sau đây
+    + Lưu trữ state
+    + Cung cấp quyền truy cập vào state
+    + Cập nhật state
+    + Khi có 1 sự kiện thay đổi state, những bên này có thể được thông báo về sự thay đổi
   - Action là 1 simple javascript object mà nó được sử dụng để gửi thông tin từ application của bạn
   xuống store. Actions là resourse duy nhất cho store.
     + Action phải có type property
   - Reducers(pure function): là những action handler, nó hoạt động kết nối giữa action và store và
     biến những thay đổi trong state.
     + Reducer nhận vào previous state và action object và return next state
-  - Store: là nơi lưu trử data của ứng dụng, nó làm 1 số việc sau đây
-    + Lưu trữ state
-    + Cung cấp quyền truy cập vào state
-    + Cập nhật state
-    + Khi có 1 sự kiện thay đổi state, những bên này có thể được thông báo về sự thay đổi
+  
 
   - Core concept redux:
     + Redux là 1 vùng chứa state cho app (mỗi app chỉ có 1 store duy nhất)
@@ -248,19 +245,57 @@ REACT
     + cleaning up any subscriptions
     + invalidating timers,
 
-11/ React là thư viện JavaScript phổ biến nhất để xây dựng giao diện người dùng (UI).
-ReactJs chỉ là view Library:
-
 12/ Props are inputs to components
   + Trigger state changes.
+
+13/ JWT: chuỗi mã hóa chứa dữ liệu được dùng để truyền tải thông tin giữa hệ thống 1 cách an toàn và đáng tin cậy
+  - Cấu trúc JWT gồm 3 phần: HEADER, PAYLOAD, SIGNATURE 
+    - HEADER: chứa thuật toán(hs256) để tạo SIGNATURE
+    - SIGNATURE: 
+      hs256(
+        bao gồm header và payload được encode,
+        1 secret key
+      )
+
+
+CSS
+CSS Flexbox
+  - Order:
+    + Cho phép đổi vị trí hiển thị của phần tử
+  
+  - Justify: flex-start, flex-end, center
+    + space-between: Tạo khoảng cách giữa các phần tử bằng nhau, phần tử đầu sát lề trái, phần tử cuối sát lề phải
+    + space-around: khá giống space-around, có khoảng cách 2 bên giữa các phần tử và những khoảng cách này bằng nhau
+  
+  - AlignItem: flex-start, flex-end, center,stretch(default),
+    + stretch: nếu các item bên trong có height: auto thì nó sẽ full container
+    + baseline: nó sẽ canh phần tử dựa vào chữ bên trong
+  
+  - Alignself(của flex item): tương tự với AlignItem những khác ở chỗ là áp dụng riêng lẻ cho các phần tử 
+    mà bạn muốn thay đổi 
+  giá trị của nó
+
+  - Flex basis(của flex item): set chiều rộng hoặc chiều cao của phần tử dựa vào flex-direction row hay column, 
+    + Default là  flex-direction: row => flex-basis tương tương đương width của phần tử,
+    + Khi flex-direction: column thì lúc này flex-basis sẽ là height của phần tử
+  
+  - Flex grow(của flex item): nó cho các phần tử giãn theo độ rộng của container
+  
+  - Flex-shrink(của flex item): nó cho các phần tử co lại khi giảm container
+    + flex-shrink: 1, item sẽ co lại khi giảm container
+    + flex-shrink: 0, item sẽ không có lại
+
+  - Flex: là viết tắt của 3 thuộc tính flex-grow, flex-shrink, flex-basis
+    + default (flex: 0 1 auto): grow(0), shrink(1), basis(auto)
+CSS Grid
+
+
 
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
-
 2/ Viêt hàm compare tuổi
 A {age: 18, name: 'A'} . B {name: 'A', age: 18}
-
 3/ Arr = [2, 3, 4, 5]
   Cho cái mảng. 
   - Tính sô lần tăng cho đến khi giá trị mảng bằng nhau
@@ -273,14 +308,14 @@ A {age: 18, name: 'A'} . B {name: 'A', age: 18}
   Arr[3]: [7, 7, 8, 7] result = 5
   Arr[2]: [8, 8, 8, 8] result = 6
   Result 6
-
 4/ arr = [2, 3, 4, 8, 10, 5, 6];
 - Ví dụ mỗi phần tử là doanh thu từng tháng theo thứ tự (tháng 1 => tháng 12), tính chệch lệch doanh thu lơn nhất giữa 2 tháng
 EX: arr = [2, 3, 4, 8, 10, 5, 6]; => result = 8 - 4 = 4;
 Ex: arr = [5, 4, 4, 2, 2]; => result = -1; (Không có tháng nào)
 
-
-
-
-
+1/ Các bước để setup ssr reactjs
+- server.js (nodejs)
+  Nó nhận nhiệm vụ nhận request từ phía client.
+- Tạo các component và entry point
+  + HTML.jsx dùng để render nội dung HTML gửi đến client
 
