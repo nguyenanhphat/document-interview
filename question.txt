@@ -257,6 +257,20 @@ REACT
         1 secret key
       )
 
+REDUX SAGA
+  - Là 1 middleware giúp xử lý side-effect
+  - Saga là những generator function, saga sẽ được middleware đoc và thực thi những câu lệnh từ trên xuống dưới
+  Khi gặp yield, redux-saga middleware sẽ nhận đc effect đó và thực thi hành động tương ứng
+  - Effect: là 1 javascript object dùng để mô tả các tác vụ đến redux-saga 
+  - Effect creator là những factory function cung cấp bởi redux-saga và hàm này sẽ trã về 1 effect
+
+    - Blocking: take, call (block nếu như function return về promise), 
+    - Non Blocking: put, fork, takeLastest, takeEvery
+    - Watcher và worker: đây là 1 cách tổ chức code
+      + Watcher: là 1 saga theo dõi tất cả action đến middleware và sẽ thông báo cho Worker thực hiện tác
+      vụ tương ứng
+      + Workder: là 1 saga sẽ thực thi các hành động bên trong nó khi nhận thông báo từ Watcher
+
 
 CSS
 CSS Flexbox
