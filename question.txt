@@ -32,7 +32,6 @@ JAVASCRIPT
     - Const
         - Để khai báo 1 hắng số
         - Không thể cập nhật giá trị
-
 2/ Con trỏ this
 - Giá trị của this là một object trước dấu .
 - Khi gọi mà không có đối tượng thì thís == undefined (See ex3)
@@ -115,6 +114,16 @@ JAVASCRIPT
 - Function*
   Khi nó đc gọi, nó không thục thi code, thay vào đó nó return 1 object, để quản lý execution
   method là generator object
+- Là iterable
+  function* generateSequence() {
+    yield 1;
+    yield 2;
+    return 3;
+  }
+  let generator = generateSequence();
+  for(let value of generator) {
+    alert(value); // 1, then 2
+  }
 
 9/ Currying function
 - Thay vì function truyển 1 lúc nhiều argument, chúng lại được chuyển kiểu viết đó thành 1 function 
@@ -128,6 +137,13 @@ chỉ nhận 1 argument, nhưng bên trong đó chúng ta lồng các function c
   }
   multiply(1)(2)(3)
 
+10/ Null và undefined
+- Null: có nghĩa là 1 giá trị trống hoặc không tồn tại, null được khai báo và có nghĩa là 
+không có gì
+  + typeof null = object
+- Undefined: có nghĩa là khi 1 biến đc khai báo, nhưng lại chưa được khởi tạo bát kì giá trị nào
+  + typeof undefined = undefined
+
 REACT
 1/ HOC
 - A Hoc là 1 function mà nó nhận vào 1 component và returns 1 component mới
@@ -140,10 +156,21 @@ REACT
       static getDerivedStateFromError() or componentDidCatch()
 
 3/ Hook là gì ?
+- Tại sao phải sử dụng react hook
+  Khó khăn khi chia sẻ logic giữa các component, nhiều thì sẽ bị trường hợp wrapper hell
+  Lifecycle có khả năng tạo ra bẫy cho người mới
+- Những rule khi sữ dụng hook
+  + Phải đc call ở cấp ngoài cùng
+  + Không call hook trong vòng lặp, điều kiện, nested function  
+
+- Useeffect:
+  Nên declare function bên trong useEffect và gọi nó, khó để nhớ props và state bên ngoài useEffect
+
 - Là những hàm cho phép bạn “kết nối” React state and lifecycle vào các function component
 - Lợi ích: 
     - Code ngắn hơn
     - Hoàn toàn tự nguyện, 100% tương thích ngược
+
 
 4/ Function component và class component
 - Khác nhau lớn nhất giữa function component và class component là
@@ -194,26 +221,6 @@ REACT
   Vì xu hướng là mobile first => react native phổ biến hơn angular có ionic. 
   Cân nhắc tuỳ theo dự án cần mobile app hay ko ? tối ưu thời gian hay ko
 
-9. Redux
-  - Store: là nơi lưu trử data của ứng dụng, nó làm 1 số việc sau đây
-    + Lưu trữ state
-    + Cung cấp quyền truy cập vào state
-    + Cập nhật state
-    + Khi có 1 sự kiện thay đổi state, những bên này có thể được thông báo về sự thay đổi
-  - Action là 1 simple javascript object mà nó được sử dụng để gửi thông tin từ application của bạn
-  xuống store. Actions là resourse duy nhất cho store.
-    + Action phải có type property
-  - Reducers(pure function): là những action handler, nó hoạt động kết nối giữa action và store và
-    biến những thay đổi trong state.
-    + Reducer nhận vào previous state và action object và return next state
-  
-
-  - Core concept redux:
-    + Redux là 1 vùng chứa state cho app (mỗi app chỉ có 1 store duy nhất)
-    + Redux thì không cần được sử dụng với React
-    + State là read-only. Nó chỉ được thay đổi bằng việc dispacthing 1 action đến store
-    + Để mô tả các thay đổi của state bạn phải viết 1 function nhận vào current state và action 
-    để thực hiện. Các function này phải trả về 1 state mới.
 
 10/ lifecycle của React
 - Mounting
@@ -256,6 +263,26 @@ REACT
         bao gồm header và payload được encode,
         1 secret key
       )
+REDUX
+  - Store: là nơi lưu trữ data của ứng dụng, nó làm 1 số việc sau đây
+    + Lưu trữ state
+    + Cung cấp quyền truy cập vào state
+    + Cập nhật state
+    + Khi có 1 sự kiện thay đổi state, những bên này có thể được thông báo về sự thay đổi
+  - Action là 1 simple javascript object mà nó được sử dụng để gửi thông tin từ application của bạn
+  xuống store. Actions là resourse duy nhất cho store.
+    + Action phải có type property
+  - Reducers(pure function): là những action handler, nó hoạt động kết nối giữa action và store và
+    biến những thay đổi trong state.
+    + Reducer nhận vào previous state và action object và return next state
+
+  - Core concept redux:
+    + Redux là 1 vùng chứa state cho app (mỗi app chỉ có 1 store duy nhất)
+    + Redux thì không cần được sử dụng với React
+    + State là read-only. Nó chỉ được thay đổi bằng việc dispacthing 1 action đến store
+    + Để mô tả các thay đổi của state bạn phải viết 1 function nhận vào current state và action 
+    để thực hiện. Các function này phải trả về 1 state mới.
+
 REDUX SAGA
   - Là 1 middleware giúp xử lý side-effect
   - Saga là những generator function, saga sẽ được middleware đoc và thực thi những câu lệnh từ trên xuống dưới
