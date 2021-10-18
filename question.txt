@@ -256,7 +256,6 @@ REACT
         bao gồm header và payload được encode,
         1 secret key
       )
-
 REDUX SAGA
   - Là 1 middleware giúp xử lý side-effect
   - Saga là những generator function, saga sẽ được middleware đoc và thực thi những câu lệnh từ trên xuống dưới
@@ -266,12 +265,48 @@ REDUX SAGA
 
     - Blocking: take, call (block nếu như function return về promise), 
     - Non Blocking: put, fork, takeLastest, takeEvery
+      + fork và spawn: phân nhánh các tác vụ để thực thi
+        - fork: attached fork (khi xảy ra lỗi nó sẽ báo cho thằng cha, và hủy các tác vụ còn lại)
+        - spawn: detached fork
+
     - Watcher và worker: đây là 1 cách tổ chức code
       + Watcher: là 1 saga theo dõi tất cả action đến middleware và sẽ thông báo cho Worker thực hiện tác
       vụ tương ứng
       + Workder: là 1 saga sẽ thực thi các hành động bên trong nó khi nhận thông báo từ Watcher
 
+SO SÁNH REDUX-THUNK VÀ REDUX-SAGA
+  Redux thunk
+  - Ít code hơn
+  - Dễ hiểu hơn khi so sánh với redux saga
+  - Quy mô mở rộng khó
+  - Có thể khó để viết test
+  - Action creator giữ nhieu logic
+  Redux saga
+  - Nhiều code hơn
+  - Khó để hiểu hơn như là khái niệm generator function, redux-saga effect
+  - Dễ dàng mở rộng hơn so với redux-thunk
+  - Dễ viết test cho tất cả logic không đồng bộ
 
+  - Đơn giản trong việc sắp xếp các side-effect
+    function* mySaga() {
+      while ( true ) {
+      yield take(‘API_CALL’);
+      const response = yield call(api.method, action.payload)
+      if (response.token) {
+        yield put({type: ‘API_CALL_SUCCESS’, payload: response.token});
+      } else {
+        yield put({type: ‘API_CALL_FAIL’})
+      }
+    }
+    if(‘should handle API_CALL type and perform api.method’, () => {
+      const saga = mySaga();
+      let next = saga.next();
+      expect(next.value).toEqual(take(‘API_CALL’}));
+      next = saga.next({type: ‘API_CALL’, payload: 1});
+      expect(next.value).toEqual(call(api.method, {payload: 1}));
+      next = saga.next({token: 1});
+      expect(next.value).toEqual(put({type: ‘API_CALL_SUCCESS’}, payload: 1}))
+    });
 CSS
 CSS Flexbox
   - Order:
@@ -355,7 +390,15 @@ rem và em
   - em: là đơn vị tham chiếu tỷ lệ so với phần tử cha trực tiếp chứa nó hoặc 
   chính nó dựa vào giá trị của thuộc tính là font-size
 
+TYPESCRIPT: là 1 phiên bản nâng cao của javascript, nó bổ sung các static type
+  - interface: cho phép bạn định nghĩa tối tượng
+  - d.ts: chứa các khai báo thông tin loại typescript được viết bằng javascript
+  - Generic type
+    Cho phép truyền type vào component(function, class, interface). Giúp các component tái sử dụng tốt hơn
 
+  - Code typescript dễ đoán và dễ debug
+  - Khi muốn nâng cấp hệ thống nó sẽ dễ dàng hơn, không gây náo loạn cho hệ thống
+  
 CHALLENGE
 1/ Cho một mảng, khi bỏ 1 phần tử trong mảng thì mảng vẫn đảm bảo tăng dần
 Ex: arr = [1,5,4,7,8]
