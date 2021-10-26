@@ -1,0 +1,46 @@
+
+
+const actionMove = (itemSelected) => {
+  type: ACTION_MOVE,
+  payload: {
+    itemSelected,
+  }
+}
+
+store 
+step1:
+const initialState =  {
+  inforPlaceA: {
+    cao: 1,
+    ga: 2,
+    baogao: 3
+  }
+  inforPlaceB: null,
+  currentItem: null
+  step: 1
+}
+
+step2:
+const initialState =  {
+  inforPlaceA: {
+    cao: 1,
+    baogao: 3
+  }
+  inforPlaceB: {
+    ga: 2
+  },
+  currentItem: ga
+  step: 2
+}
+
+step3:
+const initialState =  {
+  inforPlaceA: {
+    baogao: 3
+  }
+  inforPlaceB: {
+    ga: 2
+  },
+  currentItem: ga
+  step: 2
+}
