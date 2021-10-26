@@ -20,7 +20,7 @@ JAVASCRIPT
               if (true) {
                 var phrase = "Hello";
               }
-              alert(phrase); // works
+              alert(phrase); // works 
             }
             sayHi();
             alert(phrase); // ReferenceError: phrase is not defined
@@ -406,6 +406,9 @@ CSS Grid
         grid-template-rows: 50px 1fr 30px;
         grid-template-columns: 150px 1fr;
 
+Pseudo-classes: dùng để xác định trạng thái đặc biết của 1 phần tử
+  - :acitive, :hover, :first-child, :last-child, :nth-child
+
 Box-sizing:
   + content-box: các element có default là content-box. 
     Thuộc tính width và height để định nghĩa chiều rộng / cao của content
@@ -453,4 +456,6 @@ Ex: arr = [5, 4, 4, 2, 2]; => result = -1; (Không có tháng nào)
   Nó nhận nhiệm vụ nhận request từ phía client.
 - Tạo các component và entry point
   + HTML.jsx dùng để render nội dung HTML gửi đến client
+
+
 
