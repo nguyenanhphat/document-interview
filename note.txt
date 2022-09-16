@@ -1,0 +1,54 @@
+Introduce yourself in 30 seconds:
+
+Experience (years)
+Technologies (React, HTML, CSS, etc.)
+What you are good at
+What you want to improve on and learn for the future
+
+Free time (learning on Udemy, pet projects, etc.)
+Communication skills / English --> and what is your objective, for example: "I'm also improving my English skills and I want to reach Upper-Intermediate level in the next 12 months by speaking with foreign coworkers on a daily basis"
+
+"...so I'm very excited to be here today and learn more about your project, so thank you for meeting with me today."
+
+Create a connection with the other person (2-way communication)
+
+Smile
+Ask questions
+
+If the interviewer asks you: "Can you tell me about JavaScript?"
+
+"JavaScript? Sure. I'm sure you know Java. /OR/ Do you know Java? They're both programming languages, but JS is used in the frontend..."
+
+Summarize the questions (helps you to make sure you understand them):
+
+Repeat the key words of the question
+If you don't understand the question, ask to rephrase it:
+
+"Can you rephrase the question?"
+"Maybe you could ask the question in a different way? I'm not sure if I got it." 
+
+"May I give an example?" ---> STAR method
+
+Use examples when you can
+
+STAR method
+
+Situation (when, where: give some context / describe the situation)
+Task (what was your responsibility?)
+Action (what steps did you take?)
+Result (what positive outcomes were there?) "The happy ending" of the story.
+
+Lesson learned: summarize what you learned from the example & why it matters
+
+
+Ask questions at the end about (for example):
+
+the project
+the team
+any technologies the interviewer asks you about during the interview
+
+Example: "You asked me about NodeJS a moment ago. I'm curious how you use it in the project. Could you tell me more how..."
+
+Remember to thank the interviewer for his time in the end:
+
+"Thank you very much for meeting with me. I really appreciate your time and hope I will have a chance to work on this project. Thank you."

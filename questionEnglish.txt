@@ -1,8 +1,14 @@
 1/ Introduce
 + Working experience
-    - I have more than 6 years experience in Frontend development
+    - I have more than 5 years experience in Frontend development
     - I have strong knowledge with Javascript and Reactjs
     - I used to work with some kind of projects: Recruiment CRM, ecommerce, healthcare system, insurance system
+
+    import leadershop ship why I buy 
+
+2/ Talk about your currently company
+    - Vincere is the tech company revolutionizing recruitment
+    - Vincere is equip recruiters with CRM system, AI & analytics, website building, video interviewing and more.
 
 2/ What are your strengths?
     - I am a not only hardworking but also positive person
@@ -10,6 +16,9 @@
         + For good bad advice: I revice myself
 
 3/ What are your weaknesses?
+    - I trust people very fast and this somestime creates problems in my life
+    - When I invloved in my work I cannot think of anything else, sometimes I dont remember important thinngs
+    going on in my familys
     - About 2 years ago, I am quite a cool person so I rarely talk to others actively.
     - And I realized it. I deal with it by trying to comunicate with others when I attend new enviroment
 
@@ -31,3 +40,23 @@
     Although I know that not everyone gets promoted to this level, I'm going to be learning and 
     gaining practical experience until then. I belives oppportunites come to great workers and 
     I'm going to try to be one of them
+
+- Javascript is object base langue
+
+- I like Java, intergrate html , browser
+    + easy to learn 
+    + systax more relax
+    + multi threading
+        + advantage, disadvantage
+
+- Have you ever
+
+- What
+
+- Can you ask me about reactjs ?
+    Do you know java right ?
+    Is it ok for  give you real suituation ?
+
+- as you know teamwork very important 
+- In free time I like to learn nodejs and I love to love 
+
