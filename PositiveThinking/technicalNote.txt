@@ -1,0 +1,90 @@
+1/ The Flow Rendering
+The rendering engine start getting content of requested  document from 
+the networking layer
+- Parse HTML to construct the DOM tree
+    + start parsing the HTML document and turn the tags to DOM node
+    + And parse style data both in external css files and in style elements
+- Render tree construction
+    + The render tree contains rectangles with visual attributes like color and dimensions.
+- Layout of the render tree
+    + After the construction of the render tree it goes through a layout  process.
+    This means giving each node the exact coordinates where it should appear on the screen
+- Paiting the render tree
+    + Painting the render tree will be traversed and each node will be painted using the UI backend layer
+
+
+3/ How does React work ?
+- React basically maintains a tree for you. This tree is able to do efficient diff computations on the nodes.
+- React allows you to effectively re-construct your DOM in JavaScript and 
+push only those changes to the DOM which have actually occurred.
+    1/ JSX is syntactic sugar
+    -  JSX is simply syntactic sugar for creating very specific JavaScript objects.
+      const tag = <h1>Hello</h1>
+      const tag = React.createElement("h1", {}, "Hello")
+
+    - You see, when you start writing nested stuff, not only is this difficult to code, 
+    but it also becomes very inconvenient to maintain such a codebase
+    - React.createElement creates a plain JavaScript object
+
+    2/ React Renderer
+    ReactDOM.render(<App />, container)
+    - We know that when <App /> has been done parsing, this is just a huge object of React elements
+    - ReactDOM in turn, recursively creates nodes depending on their 'type' property and 
+    appends them finally to the DOM.
+    - What React does is,  simply construct a tree of UI which could be used not only on web, 
+    but on environments like mobile too,
+
+    3/ React Reconciliation
+    Call render at the first time
+    - When we call render method, React generates this tree of elements by starting at the top and 
+    recursively moving to bottom and return React elements, this tree of elements is kept in memory,
+    it is the vitual DOM.
+    - The next thing to do is sync the vitual DOM with the real DOM
+    - On the initial render, React has to insert the full tree into the DOM
+    When the tree changes, state changes
+    - Generate new tree again. Now we have 2 the old one and the new one
+    - React has to sync the vitual DOM with the real DOM again but React can't just re-render the whole tree
+    - React compares the trees and finds the smallest number of operations to transform one tree into the other
+    by using Diffing  algorithm
+    + Diffing  algorithm
+      1. Two elements of different types will produce different trees
+      2. When we have a list of child elements which often changes we should provide an unique key as a prop
+
+
+4/ What is React component
+- Class or function that output an element tree
+
+
+5/ React Reconciliation
+- When state or props change, instead of rendering full tree to DOM, 
+React need to figure out how to efficiently update the UI to match the most recent tree. 
+React implement diffing Algorithm based on two assumptions
+  1. Two elements of different types will produce different trees
+  2. When we have a list of child elements which often changes we should provide an unique key as a prop
+
+6/ What are Pure Components?
+- React.PureComponent is exactly the same as React.Component except that it handles the shouldComponentUpdate() method for you. When props or state changes, PureComponent will do a shallow comparison on both props and state. Component on the other hand won't compare current props and state to next out of the box. Thus, the component will re-render by default whenever shouldComponentUpdate is called.
+
+6/ Controlled components and uncontrolled components
+- Controlled components in React are those in which form data is handled by the component’s state.
+  + Each form element contains a value.  When the element’s value is changed, it is updated accordingly.
+
+- Uncontrolled components are those for which the form data is handled by the DOM itself
+The values of the form elements are traditionally controlled by and stored on the DOM. We will have to refer to the instance of the form elements to retrieve their values from the DOM.
+
+- Key differences
+  + Controlled components are predictable because the state of the form elements is handled by the component
+  + Controlled components enable you effectively use form validation to your forms
+  + Controlled components, you are very much in control of your form elements’ values.
+
+  + Uncontrolled components are not predictable because, during the lifecycle of a component, the form elements can lose their reference and may be changed/affected by other sources
+
+7/ getDerivedStateFromProps
+- When to Use Derived State
+  + getDerivedStateFromProps exists for only one purpose. It enables a component to update its internal state base on new props values:
+
+  There are two common misstake
+  
+  1/ unconditionally updating state from props 
+  2/ updating state whenever props and state don’t match.
+
